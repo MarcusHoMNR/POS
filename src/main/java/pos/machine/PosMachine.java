@@ -46,4 +46,8 @@ public class PosMachine {
         });
         return itemInfosWithQuantity;
     }
+
+    private void getSubtotal (ItemInfo itemInfo) {
+        itemInfo.setSubtotal(itemInfo.getQuantity() * itemInfo.getPrice());
+    }
 }
