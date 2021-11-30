@@ -15,4 +15,16 @@ public class PosMachine {
         return null;
     }
 
+    private List<ItemInfo> getItemInfoByBarCodes(List<String> barcodes) {
+        List<ItemInfo> allItemInfos = loadAllItemInfos();
+        List<ItemInfo> mappedItem = new ArrayList<>();
+        for (String barcode : barcodes) {
+            allItemInfos.forEach(item -> {
+                if (barcode.equals(item.getBarcode())) {
+                    mappedItem.add(item);
+                }
+            });
+        }
+        return mappedItem;
+    }
 }
