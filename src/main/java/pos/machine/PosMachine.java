@@ -44,23 +44,23 @@ public class PosMachine {
     private List<ItemInfo> getItemDetail(List<ItemInfo> itemInfos) {
         List<ItemInfo> distinctItemInfo = getQuantity(itemInfos);
         distinctItemInfo.forEach(item-> {
-            getSubtotal(item);
+            setSubtotal(item);
         });
         return distinctItemInfo;
     }
 
     private List<ItemInfo> getQuantity(List<ItemInfo> itemInfos) {
-        List<ItemInfo> itemInfosWithQuantity = new ArrayList<>();
+        List<ItemInfo> distinctItemInfosWithQuantity = new ArrayList<>();
         itemInfos.forEach(item -> {
             item.setQuantity(Collections.frequency(itemInfos, item));
-            if (!(itemInfosWithQuantity.contains(item))) {
-                itemInfosWithQuantity.add(item);
+            if (!(distinctItemInfosWithQuantity.contains(item))) {
+                distinctItemInfosWithQuantity.add(item);
             }
         });
-        return itemInfosWithQuantity;
+        return distinctItemInfosWithQuantity;
     }
 
-    private void getSubtotal (ItemInfo itemInfo) {
+    private void setSubtotal (ItemInfo itemInfo) {
         itemInfo.setSubtotal(itemInfo.getQuantity() * itemInfo.getPrice());
     }
 
