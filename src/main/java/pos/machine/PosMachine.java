@@ -12,7 +12,20 @@ import static pos.machine.ItemDataLoader.loadAllItemInfos;
 public class PosMachine {
 
     public String printReceipt(List<String> barcodes) {
-        return null;
+        List<ItemInfo> itemInfos = getItemInfoByBarCodes(barcodes);
+        List<ItemInfo> itemInfosWithDetail = getItemDetail(itemInfos);
+        int total = getTotal(itemInfosWithDetail);
+
+        StringBuilder receipt = new StringBuilder("***<store earning no money>Receipt***\n");
+
+        for (ItemInfo itemInfo: itemInfosWithDetail) {
+            receipt.append("Name: ").append(itemInfo.getName()).append(", Quantity: ").append(itemInfo.getQuantity()).append(", Unit price: ").append(itemInfo.getPrice()).append(" (yuan), Subtotal: ").append(itemInfo.getSubtotal()).append(" (yuan)\n");
+        }
+
+        receipt.append( "----------------------\n");
+        receipt.append( "Total: " + total + " (yuan)\n");
+        receipt.append( "**********************");
+        return String.valueOf(receipt);
     }
 
     private List<ItemInfo> getItemInfoByBarCodes(List<String> barcodes) {
