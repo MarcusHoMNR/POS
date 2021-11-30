@@ -1,0 +1,2 @@
+pos/machine/PosMachineTest.java
+ pos.machine.PosMachineTest
