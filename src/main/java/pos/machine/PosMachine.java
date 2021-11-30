@@ -35,4 +35,15 @@ public class PosMachine {
         });
         return distinctItemInfo;
     }
+
+    private List<ItemInfo> getQuantity(List<ItemInfo> itemInfos) {
+        List<ItemInfo> itemInfosWithQuantity = new ArrayList<>();
+        itemInfos.forEach(item -> {
+            item.setQuantity(Collections.frequency(itemInfos, item));
+            if (!(itemInfosWithQuantity.contains(item))) {
+                itemInfosWithQuantity.add(item);
+            }
+        });
+        return itemInfosWithQuantity;
+    }
 }
