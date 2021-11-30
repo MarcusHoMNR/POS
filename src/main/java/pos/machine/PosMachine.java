@@ -50,4 +50,12 @@ public class PosMachine {
     private void getSubtotal (ItemInfo itemInfo) {
         itemInfo.setSubtotal(itemInfo.getQuantity() * itemInfo.getPrice());
     }
+
+    private int getTotal (List<ItemInfo> distinctItemInfo) {
+        int total = 0;
+        for (ItemInfo item: distinctItemInfo) {
+            total+= item.getSubtotal();
+        }
+        return total;
+    }
 }
