@@ -27,4 +27,12 @@ public class PosMachine {
         }
         return mappedItem;
     }
+
+    private List<ItemInfo> getItemDetail(List<ItemInfo> itemInfos) {
+        List<ItemInfo> distinctItemInfo = getQuantity(itemInfos);
+        distinctItemInfo.forEach(item-> {
+            getSubtotal(item);
+        });
+        return distinctItemInfo;
+    }
 }
