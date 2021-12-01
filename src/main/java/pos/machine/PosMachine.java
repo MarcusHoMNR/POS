@@ -42,14 +42,12 @@ public class PosMachine {
     }
 
     private List<ItemInfo> getItemDetail(List<ItemInfo> itemInfos) {
-        List<ItemInfo> distinctItemInfo = getQuantity(itemInfos);
-        distinctItemInfo.forEach(item-> {
-            setSubtotal(item);
-        });
+        List<ItemInfo> distinctItemInfo = getDistinctListAndSetQuantity(itemInfos);
+        distinctItemInfo.forEach(this::setSubtotal);
         return distinctItemInfo;
     }
- // TODO rename getQuantity()
-    private List<ItemInfo> getQuantity(List<ItemInfo> itemInfos) {
+
+    private List<ItemInfo> getDistinctListAndSetQuantity(List<ItemInfo> itemInfos) {
         List<ItemInfo> distinctItemInfosWithQuantity = new ArrayList<>();
         itemInfos.forEach(item -> {
             item.setQuantity(Collections.frequency(itemInfos, item));
