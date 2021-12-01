@@ -48,7 +48,7 @@ public class PosMachine {
         });
         return distinctItemInfo;
     }
-
+ // TODO rename getQuantity()
     private List<ItemInfo> getQuantity(List<ItemInfo> itemInfos) {
         List<ItemInfo> distinctItemInfosWithQuantity = new ArrayList<>();
         itemInfos.forEach(item -> {
